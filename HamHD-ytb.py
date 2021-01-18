@@ -8,7 +8,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.metrics import accuracy_score
 
 
-f_ = './ytb/ytb_all.csv'
+f_ = './datasets/ytb_all.csv'
 
 
 def ReadCSV(f_path):
