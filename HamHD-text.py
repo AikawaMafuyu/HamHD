@@ -6,8 +6,10 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.metrics import accuracy_score
 
+# Path to dataset file.
 f_ = './spam.csv'
 
+# Read dataset from file and process into data and labels.
 def ReadCSV(f_path):
     df = pd.read_csv(f_path, delimiter=',', encoding='latin-1')
     df.drop(['Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4'], axis=1, inplace=True)
@@ -15,14 +17,15 @@ def ReadCSV(f_path):
     Y = df.v1
     le = LabelEncoder()
     Y = le.fit_transform(Y)
-
     return X, Y
 
+# Generate item memory.
 def memGen(dim = 10000, num_char = 37):
     dictMem = np.random.randint(2, size=(num_char, dim), dtype = 'int32')
     dictMem[dictMem == 0] = -1
     return dictMem
 
+# Encode message into an HV and performa bipolarization.
 def encode(msg, dictMem, dim = 10000):
     HV = np.zeros(dim, dtype='int32')
     for letter in msg:
@@ -38,6 +41,7 @@ def encode(msg, dictMem, dim = 10000):
     HV[HV == HV_avg] = 0
     return HV
 
+# Train the associative memory.
 def train(X, Y, dictMem, dim = 10000, n_class = 2):
     refMem = np.zeros((n_class, dim), dtype='int32')
     msg_idx = 0
@@ -47,6 +51,7 @@ def train(X, Y, dictMem, dim = 10000, n_class = 2):
         msg_idx += 1
     return refMem
 
+# Inference using the trained AM.
 def test(X, Y, dictMem, refMem, dim = 10000):
     Y_pred = []
     msg_idx = 0
@@ -63,6 +68,7 @@ def test(X, Y, dictMem, refMem, dim = 10000):
 
     return accuracy_score(Y, Y_pred)
 
+# Retrain the AM
 def retrain(X, Y, dictMem, refMem, dim = 10000):
     msg_idx = 0
     for msg in X:
@@ -80,12 +86,16 @@ def retrain(X, Y, dictMem, refMem, dim = 10000):
         msg_idx += 1
     return refMem
 
-dim = 10000
-num_char = 37
-epoch = 7
+
+dim = 10000 # Dimension
+num_char = 37 # Number of characters for unique item memory entry
+epoch = 7 # Retraining epochs
+
 if __name__ == '__main__':
     X, Y = ReadCSV(f_)
     X_ = []
+    
+    # Tokenization of messages. This needs refactoring. 
     for item in X:
         token_item = []
         for letter in item.lower():
