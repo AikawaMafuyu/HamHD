@@ -1,5 +1,5 @@
 # HamHD
-HamHD: Spam Text Detection Using Hperdimensional Computing
+HamHD: Spam Text Detection using Hperdimensional Computing
 
 ## Instructions
 
@@ -17,4 +17,4 @@ HamHD: Spam Text Detection Using Hperdimensional Computing
 
 ### Run the application.
  - Application can be run by directly executing the python script, e.g. "python3 HamHD-text.py"
- - For details about the script please check the comments inside HamHD-text.py.
+ - For details about the script (parameters, encoding schemes etc) please check the comments inside HamHD-text.py.
