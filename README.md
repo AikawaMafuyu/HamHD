@@ -12,7 +12,9 @@ HamHD: Spam Text Detection using Hperdimensional Computing
 
 ### Installing prerequisites.
  - This application runs udner Python 3. Please have the newest python version installed.
- - This application requires the following packages: pandas, numpy, scikit-learn and matplotlib (if you would like to output figures). Packages can be installed via pip.
+ - This application requires the following packages: pandas, numpy, scikit-learn and matplotlib (if you would like to output figures). Packages can be installed via:
+    
+    pip install pandas numpy scikit-learn matplotlib
 
 
 ### Run the application.
