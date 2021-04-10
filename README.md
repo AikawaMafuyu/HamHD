@@ -1,5 +1,5 @@
 # HamHD
-HamHD: Spam Text Detection using Hperdimensional Computing
+HamHD: Spam Text Detection using Hyperdimensional Computing
 
 ## Instructions
 
